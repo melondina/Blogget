@@ -4,6 +4,8 @@ import Layout from '../Layout';
 
 export const Main = () => (
   <main className={style.main}>
-    <Layout/>
+    <Layout>
+      Main
+    </Layout>
   </main>
 );

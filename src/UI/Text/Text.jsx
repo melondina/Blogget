@@ -47,7 +47,8 @@ Text.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
-    PropTypes.array
+    PropTypes.array,
+    PropTypes.number,
   ]),
   center: PropTypes.bool,
 };

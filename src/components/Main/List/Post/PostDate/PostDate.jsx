@@ -14,6 +14,6 @@ export const PostDate = ({date}) => {
 };
 
 PostDate.propTypes = {
-  date: PropTypes.date,
+  date: PropTypes.string,
 };
 

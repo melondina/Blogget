@@ -5,7 +5,7 @@ import PostImage from './PostImage';
 import PostContent from './PostContent';
 import PostRating from './PostRating';
 import PostDate from './PostDate';
-import deleteButton from './img/delete.svg';
+import {ReactComponent as DeleteButtonImg} from './img/delete.svg';
 
 export const Post = ({postData}) => {
   const {title, author, ups, date} = postData;
@@ -16,7 +16,7 @@ export const Post = ({postData}) => {
       <PostRating ups={ups}/>
       <PostDate date={date}/>
       <button className={style.delete}>
-        <img src={deleteButton} alt="Delete" />
+        <DeleteButtonImg width={15} height={15}/>
       </button>
     </li>
   );

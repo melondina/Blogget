@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 export const PostDate = ({date}) => {
-  console.log(style);
+  console.log('date');
   return (
     <time className={style.date} dateTime={date}>
       {formatDate(date)}

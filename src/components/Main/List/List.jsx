@@ -7,7 +7,7 @@ import { postsContext } from '../../../context/postsContext.js';
 
 export const List = () => {
   const {posts} = useContext(postsContext);
-  console.log('postsInList', posts);
+  // console.log('postsInList', posts);
   return (
     <ul className={style.list}>
       {/* {

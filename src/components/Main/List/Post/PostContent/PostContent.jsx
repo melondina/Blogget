@@ -1,13 +1,14 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import style from './PostContent.module.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {Text} from '../../../../../UI/Text';
-import { postsContext } from '../../../../../context/postsContext';
+// import { postsContext } from '../../../../../context/postsContext';
 
 
-export const PostContent = () => {
-  const {posts} = useContext(postsContext);
-  console.log('postsNew', posts);
+export const PostContent = ({post}) => {
+  // const {posts} = useContext(postsContext);
+  // console.log('postsNew', posts);
+  console.log(post);
   return (
     <div className={style.content}>
       <Text As='h2' className={style.title}>
@@ -15,7 +16,7 @@ export const PostContent = () => {
           size={18}
           tsize={24}
           className={style.linkPost} href='#post'>
-          {posts.data.title}
+          {post.title}
         </Text>
       </Text>
       <Text As='a'
@@ -24,13 +25,18 @@ export const PostContent = () => {
         tsize={14}
         color='orange'
         href='#author'>
-        {posts.data.author}
+        {post.author}
       </Text>
     </div>
   );
-};
+}
+;
 
 // PostContent.propTypes = {
 //   author: PropTypes.string,
 //   title: PropTypes.string,
 // };
+
+PostContent.propTypes = {
+  post: PropTypes.object,
+};

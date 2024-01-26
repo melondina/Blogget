@@ -9,6 +9,9 @@ export const usePosts = () => {
   const {token} = useContext(tokenContext);
 
   useEffect(() => {
+    if (!token) {
+      return;
+    }
     fetch(`${URL_API}/best`, {
       headers: {
         Authorization: `bearer ${token}`,

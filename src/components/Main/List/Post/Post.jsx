@@ -7,22 +7,22 @@ import PostContent from './PostContent';
 // import PostDate from './PostDate';
 import {ReactComponent as DeleteButtonImg} from './img/delete.svg';
 
-export const Post = () =>
-  // const {data} = posts;
+export const Post = ({post}) => {
+  // const {title, author} = post;
   (
     <li className={style.post}>
       {/* <PostImage /> */}
-      <PostContent />
+      <PostContent post={post}/>
       {/* <PostRating /> */}
       {/* <PostDate date={date}/> */}
       <button className={style.delete}>
         <DeleteButtonImg width={15} height={15}/>
       </button>
     </li>
-  )
-
+  );
+}
 ;
 
 Post.propTypes = {
-  posts: PropTypes.object,
+  post: PropTypes.object,
 };

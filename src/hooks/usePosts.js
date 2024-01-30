@@ -5,7 +5,6 @@ import { tokenContext } from '../context/tokenContext.js';
 
 export const usePosts = () => {
   const [posts, setPosts] = useState([]);
-  console.log(posts);
   const {token} = useContext(tokenContext);
 
   useEffect(() => {
@@ -20,7 +19,6 @@ export const usePosts = () => {
       .then((response) => response.json())
       .then(({data}) => {
         setPosts(data.children);
-        console.log('data-chi', data.children);
       })
       .catch((err) => {
         console.error(err);

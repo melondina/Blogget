@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import style from './PostContent.module.css';
 import PropTypes from 'prop-types';
 import {Text} from '../../../../../UI/Text';
+import Modal from '../../../../Modal';
 
 
 export const PostContent = ({post}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // console.log('first');
+  // console.log(post);
   return (
     <div className={style.content}>
       <Text As='h2' className={style.title}>
@@ -16,7 +17,6 @@ export const PostContent = ({post}) => {
           className={style.linkPost}
           href='#post'
           onClick={() => {
-            console.log('Link clicked');
             setIsModalOpen(true);
           }}>
           {post.title}
@@ -30,10 +30,10 @@ export const PostContent = ({post}) => {
         href='#author'>
         {post.author}
       </Text>
-      <button className={style.btn}onClick={() => {
-        console.log('Click');
-      }}>Click</button>
-      { isModalOpen && <p >Open</p> }
+      { isModalOpen && <Modal post={post}
+        closeModal={() => {
+          setIsModalOpen(false);
+        } }/> }
     </div>
   );
 };

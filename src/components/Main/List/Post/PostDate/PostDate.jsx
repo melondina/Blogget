@@ -4,17 +4,17 @@ import formatDate from '../../../../../utils/formatDate.js';
 import PropTypes from 'prop-types';
 
 
-export const PostDate = ({post}) =>
-  // console.log('date');
+export const PostDate = ({date}) =>
+  // console.log('date', date);
   (
-    <time className={style.date} dateTime={post.created}>
-      {formatDate(post.created)}
+    <time className={style.date} dateTime={date}>
+      {formatDate(date)}
     </time>
   )
+
 ;
 
 PostDate.propTypes = {
-  date: PropTypes.string,
-  post: PropTypes.object,
+  date: PropTypes.number,
 };
 

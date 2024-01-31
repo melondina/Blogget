@@ -7,10 +7,10 @@ import PostRating from './PostRating';
 import PostDate from './PostDate';
 import {ReactComponent as DeleteButtonImg} from './img/delete.svg';
 
-export const Post = ({post}) => {
-  console.log('post', post);
+export const Post = ({post}) =>
+  // console.log('post', post);
   // const {title, author} = post;
-  return (
+  (
     <li className={style.post}>
       <PostImage post={post}/>
       <PostContent post={post}/>
@@ -20,8 +20,8 @@ export const Post = ({post}) => {
         <DeleteButtonImg width={15} height={15}/>
       </button>
     </li>
-  );
-}
+  )
+
 
 ;
 

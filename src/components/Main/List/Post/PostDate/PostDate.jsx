@@ -8,7 +8,7 @@ export const PostDate = ({date}) =>
   // console.log('date', date);
   (
     <time className={style.date} dateTime={date}>
-      {formatDate(date)}
+      {date ? formatDate(date) : null}
     </time>
   )
 

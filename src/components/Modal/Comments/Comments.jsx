@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import PostDate from '../../Main/List/Post/PostDate';
 
 
-export const Comments = ({comments}) => {
-  console.log(comments);
-  return (
+export const Comments = ({comments}) =>
+  // console.log(comments);
+  (
     <ul className={style.list}>
       {comments[0].map((comment) => (
         <li key={comment?.id} className={style.item}>
@@ -25,8 +25,8 @@ export const Comments = ({comments}) => {
         </li>
       ))}
     </ul>
-  );
-};
+  )
+;
 
 Comments.propTypes = {
   comments: PropTypes.array,

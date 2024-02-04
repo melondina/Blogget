@@ -1,11 +1,13 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import {URL_API} from '../api/const';
-import { tokenContext } from '../context/tokenContext.js';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 export const usePosts = () => {
+  const token = useSelector(state => state.token);
+  const dispatch = useDispatch();
+
   const [posts, setPosts] = useState([]);
-  const {token} = useContext(tokenContext);
 
   useEffect(() => {
     if (!token) {
@@ -18,11 +20,11 @@ export const usePosts = () => {
     })
       .then((response) => response.json())
       .then(({data}) => {
-        setPosts(data.children);
+        dispatch(setPosts(data.children));
       })
       .catch((err) => {
         console.error(err);
-        setPosts([]);
+        dispatch(setPosts([]));
       });
   }, [token]);
 

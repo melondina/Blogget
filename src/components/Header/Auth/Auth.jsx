@@ -5,12 +5,10 @@ import style from './Auth.module.css';
 import {ReactComponent as LoginIcon} from './img/login.svg';
 import {urlAuth} from '../../../api/auth';
 import {Text} from '../../../UI/Text';
-import { tokenContext } from '../../../context/tokenContext';
 import { authContext } from '../../../context/authContext.js';
 
 
 export const Auth = () => {
-  const {delToken} = useContext(tokenContext);
   const {auth, clearAuth} = useContext(authContext);
   const [isVisibleLogoutButton, setVisibleLogoutButton] = useState(false);
 
@@ -19,7 +17,6 @@ export const Auth = () => {
   };
 
   const logOut = () => {
-    delToken();
     clearAuth();
   };
 

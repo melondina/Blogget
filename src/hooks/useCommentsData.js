@@ -1,11 +1,13 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import {URL_API} from '../api/const';
-import { tokenContext } from '../context/tokenContext.js';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 export const useCommentsData = (id) => {
   const [comments, setComments] = useState([]);
-  const {token} = useContext(tokenContext);
+  const token = useSelector(state => state.token);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     if (!token) {
@@ -36,7 +38,7 @@ export const useCommentsData = (id) => {
           },
         ]) => {
           const comments = children.map(item => item.data);
-          setComments([post, comments]);
+          dispatch(setComments([post, comments]));
         },
       )
       .catch((err) => {

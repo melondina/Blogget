@@ -1,14 +1,19 @@
 import React, { useRef, useState, useEffect } from 'react';
 import style from './FormComment.module.css';
 import {Text} from '../../../UI/Text';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateComment } from '../../../store';
 
 
 export const FormComment = () => {
+  const value = useSelector(state => state.comment);
+  const dispatch = useDispatch();
+
   const textFromTextarea = useRef(null);
   const [showTextarea, setShowTextarea] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(textFromTextarea.current.value);
+    console.log(value);
     setShowTextarea(false);
   };
 
@@ -21,6 +26,11 @@ export const FormComment = () => {
   const handleButtonClick = () => {
     setShowTextarea(true);
   };
+
+  const handleChange = (e) => {
+    dispatch(updateComment(e.target.value));
+  };
+
   return (
     <>
       {!showTextarea && (
@@ -35,7 +45,9 @@ export const FormComment = () => {
           tsize={18}>
         Имя авторизованного пользователя
         </Text>
-        <textarea ref={textFromTextarea}
+        <textarea
+          defaultValue={value}
+          onChange={handleChange}
           className={style.textarea}></textarea>
         <button className={style.btn}>Отправить</button>
       </form>}

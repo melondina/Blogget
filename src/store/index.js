@@ -1,0 +1,67 @@
+import { createStore } from 'redux';
+import { getToken, setToken } from '../api/token';
+
+
+const initialState = {
+  comment: 'Hello',
+  token: getToken(),
+};
+
+const UPDATE_COMMENT = 'UPDATE_COMMENT';
+const UPDATE_TOKEN = 'UPDATE_TOKEN';
+const DELETE_TOKEN = 'DELETE_TOKEN';
+const SET_COMMENTS = 'SET_COMMENTS';
+
+export const updateComment = comment => ({
+  type: UPDATE_COMMENT,
+  comment,
+});
+
+export const setCommentsAction = (comments) => ({
+  type: 'SET_COMMENTS',
+  comments,
+});
+
+export const updateToken = token => ({
+  type: UPDATE_TOKEN,
+  token,
+});
+
+export const deleteToken = token => ({
+  type: DELETE_TOKEN,
+  token,
+});
+
+const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case UPDATE_COMMENT:
+      return {
+        ...state,
+        comment: action.comment,
+      };
+    case SET_COMMENTS:
+      return {
+        ...state,
+        comments: action.comments,
+      };
+
+    case UPDATE_TOKEN:
+      setToken(action.token);
+      return {
+        ...state,
+        token: action.token,
+      };
+    case DELETE_TOKEN:
+      setToken('');
+
+      return {
+        ...state,
+        token: '',
+      };
+
+
+    default:
+      return state;
+  }
+};
+export const store = createStore(rootReducer);

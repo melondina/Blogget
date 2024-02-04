@@ -1,11 +1,14 @@
+import { useDispatch, useSelector } from 'react-redux';
 import {URL_API} from '../api/const';
-import { useState, useEffect, useContext } from 'react';
-import { tokenContext } from '../context/tokenContext.js';
+import { useState, useEffect } from 'react';
+import { deleteToken } from '../store/index.js';
 
 
 export const useAuth = () => {
   const [auth, setAuth] = useState({});
-  const {token, delToken} = useContext(tokenContext);
+  const token = useSelector(state => state.token);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     if (!token) {
@@ -26,12 +29,12 @@ export const useAuth = () => {
       })
       .then(({name, icon_img: iconImg}) => {
         const img = iconImg.replace(/\?.*$/, '');
-        setAuth({name, img});
+        dispatch(setAuth({name, img}));
       })
       .catch((err) => {
         console.error(err);
-        setAuth({});
-        delToken();// вот так?
+        dispatch(setAuth({}));
+        dispatch(deleteToken());// вот так?
       });
   }, [token]);
 

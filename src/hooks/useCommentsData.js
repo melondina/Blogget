@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import {URL_API} from '../api/const';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 export const useCommentsData = (id) => {
   const [comments, setComments] = useState([]);
   const token = useSelector(state => state.token);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const useCommentsData = (id) => {
           },
         ]) => {
           const comments = children.map(item => item.data);
-          dispatch(setComments([post, comments]));
+          setComments([post, comments]);
         },
       )
       .catch((err) => {

@@ -20,7 +20,7 @@ export const usePosts = () => {
     })
       .then((response) => response.json())
       .then(({data}) => {
-        dispatch(setPosts(data.children));
+        setPosts(data.children);
       })
       .catch((err) => {
         console.error(err);

@@ -29,7 +29,7 @@ export const useAuth = () => {
       })
       .then(({name, icon_img: iconImg}) => {
         const img = iconImg.replace(/\?.*$/, '');
-        dispatch(setAuth({name, img}));
+        setAuth({name, img});
       })
       .catch((err) => {
         console.error(err);

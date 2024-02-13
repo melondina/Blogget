@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 export const usePosts = () => {
-  const token = useSelector(state => state.token);
+  const token = useSelector(state => state.tokenReducer.token);
   const dispatch = useDispatch();
 
   const [posts, setPosts] = useState([]);

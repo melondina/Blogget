@@ -2,11 +2,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import style from './FormComment.module.css';
 import {Text} from '../../../UI/Text';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateComment } from '../../../store';
+import { updateComment } from '../../../store/commentReducer';
 
 
 export const FormComment = () => {
-  const value = useSelector(state => state.comment);
+  const value = useSelector(state => state.commentReducer.comment);
   const dispatch = useDispatch();
 
   const textFromTextarea = useRef(null);

@@ -1,15 +1,16 @@
 /* eslint-disable max-len */
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import style from './Auth.module.css';
 // import PropTypes from 'prop-types';
 import {ReactComponent as LoginIcon} from './img/login.svg';
 import {urlAuth} from '../../../api/auth';
 import {Text} from '../../../UI/Text';
-import { authContext } from '../../../context/authContext.js';
+import { useAuth } from '../../../hooks/useAuth';
+import AuthLoader from './AuthLoader';
 
 
 export const Auth = () => {
-  const {auth, clearAuth} = useContext(authContext);
+  const [auth, loading, clearAuth] = useAuth();
   const [isVisibleLogoutButton, setVisibleLogoutButton] = useState(false);
 
   const handleClick = () => {
@@ -25,7 +26,7 @@ export const Auth = () => {
 
   return (
     <div className={style.container}>
-      {auth.name ? (
+      {loading ? (<AuthLoader/>) : auth.name ? (
         <>
           <button onClick={handleClick}
             className={style.btn}>

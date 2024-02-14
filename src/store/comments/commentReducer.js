@@ -1,20 +1,8 @@
+import { SET_COMMENTS, UPDATE_COMMENT } from './action';
+
 const initialState = {
   comment: 'Hello',
 };
-
-const UPDATE_COMMENT = 'UPDATE_COMMENT';
-const SET_COMMENTS = 'SET_COMMENTS';
-
-export const updateComment = comment => ({
-  type: UPDATE_COMMENT,
-  comment,
-});
-
-export const setCommentsAction = (comments) => ({
-  type: 'SET_COMMENTS',
-  comments,
-});
-
 
 export const commentReducer = (state = initialState, action) => {
   switch (action.type) {

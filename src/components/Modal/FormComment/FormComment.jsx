@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import style from './FormComment.module.css';
 import {Text} from '../../../UI/Text';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateComment } from '../../../store/commentReducer';
+import { useSelector } from 'react-redux';
+// import { updateComment } from '../../../store/commentReducer';
 
 
 export const FormComment = () => {
   const value = useSelector(state => state.commentReducer.comment);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const textFromTextarea = useRef(null);
   const [showTextarea, setShowTextarea] = useState(false);
@@ -28,7 +28,7 @@ export const FormComment = () => {
   };
 
   const handleChange = (e) => {
-    dispatch(updateComment(e.target.value));
+    // dispatch(updateComment(e.target.value));
   };
 
   return (

@@ -12,6 +12,7 @@ import FormComment from './FormComment';
 
 export const Modal = ({post, closeModal}) => {
   const [comments, loading] = useCommentsData(post.id);
+  console.log(comments);
   const mainPost = comments?.[0];
   const postComments = comments?.slice(1);
 
@@ -30,6 +31,7 @@ export const Modal = ({post, closeModal}) => {
       closeModal();
     }
   };
+
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
     setIsDataLoaded(!!mainPost);

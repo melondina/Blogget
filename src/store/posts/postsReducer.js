@@ -1,4 +1,5 @@
-import { POSTS_REQUEST, POSTS_REQUEST_ERROR, POSTS_REQUEST_SUCCESS }
+import { POSTS_CLEAR, POSTS_REQUEST,
+  POSTS_REQUEST_ERROR, POSTS_REQUEST_SUCCESS }
   from './actions';
 
 
@@ -31,6 +32,12 @@ export const postsReducer = (state = initialState, action) => {
         loading: false,
         error: action.error,
       };
+    case POSTS_CLEAR:
+      return {
+        ...state,
+        data: [],
+      };
+
 
     default: return state;
   }

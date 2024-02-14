@@ -3,12 +3,17 @@ import axios from 'axios';
 
 
 export const POSTS_REQUEST = 'POSTS_REQUEST';
+export const POSTS_CLEAR = 'POSTS_CLEAR';
 export const POSTS_REQUEST_SUCCESS = 'POSTS_REQUEST_SUCCESS';
 export const POSTS_REQUEST_ERROR = 'POSTS_REQUEST_ERROR';
 
 
 export const postsRequest = () => ({
   type: POSTS_REQUEST,
+});
+
+export const postsClear = () => ({
+  type: POSTS_CLEAR,
 });
 
 export const postsRequestSuccess = (data) => ({
@@ -28,7 +33,7 @@ export const postsRequestAsync = () => (dispatch, getState) => {
     return;
   }
 
-  dispatch(postsRequest());
+  dispatch(postsRequestSuccess());
 
   axios(`${URL_API}/best`, {
     headers: {
@@ -36,8 +41,9 @@ export const postsRequestAsync = () => (dispatch, getState) => {
     },
   })
     .then(({data: {data: {children}}}) => {
+      // const data = [children];
       dispatch(postsRequestSuccess(children));
-      console.log(children);
+      // console.log(postsRequestSuccess(children));
     })
     .catch((err) => {
       console.error(err);

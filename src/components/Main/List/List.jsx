@@ -1,21 +1,16 @@
 import React from 'react';
 import Post from './Post';
 import style from './List.module.css';
-// import { postsContext } from '../../../context/postsContext.js';
 import { usePosts } from '../../../hooks/usePosts.js';
+import ListLoader from './ListLoader';
 
 
 export const List = () => {
-  const [posts] = usePosts();
-  // const {posts} = useContext(postsContext);
-  console.log(posts);
-  // console.log('postsInList', posts);
+  const [posts, loading] = usePosts();
   return (
     <ul className={style.list}>
-      {
-        posts.map((post) => (
-          <Post key={post.data.id} post={post.data}/>
-        ))}
+      {loading ? <ListLoader /> :
+      posts.map(post => <Post key={post.data.id} post={post.data} />)}
     </ul>
   );
 };

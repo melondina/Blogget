@@ -1,4 +1,4 @@
-import { SET_COMMENTS, UPDATE_COMMENT } from './action';
+import { COMMENTS_REQUEST_ERROR, SET_COMMENTS, UPDATE_COMMENT } from './action';
 
 const initialState = {
   comment: 'Hello',
@@ -16,6 +16,13 @@ export const commentReducer = (state = initialState, action) => {
         ...state,
         comments: action.comments,
       };
+
+    case COMMENTS_REQUEST_ERROR:
+      return {
+        ...state,
+        error: action.error,
+      };
+
 
     default:
       return state;

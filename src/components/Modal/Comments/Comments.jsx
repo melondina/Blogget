@@ -9,19 +9,19 @@ export const Comments = ({comments}) =>
   // console.log(comments);
   (
     <ul className={style.list}>
-      {comments[0].map((comment) => (
-        <li key={comment?.id} className={style.item}>
+      {comments.map((comment) => (
+        <li key={comment?.data.id} className={style.item}>
           <Text As='h3' className={style.author}
             size={18}
             tsize={22}>
-            {comment.author}
+            {comment.data.author}
           </Text>
           <Text As='p' className={style.comment}
             size={14}
             tsize={18}>
-            {comment.body}
+            {comment.data.body}
           </Text>
-          <PostDate date={comment.created} />
+          <PostDate date={comment.data.created} />
         </li>
       ))}
     </ul>

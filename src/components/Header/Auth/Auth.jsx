@@ -6,7 +6,7 @@ import {ReactComponent as LoginIcon} from './img/login.svg';
 import {urlAuth} from '../../../api/auth';
 import {Text} from '../../../UI/Text';
 import { useAuth } from '../../../hooks/useAuth';
-import AuthLoader from './AuthLoader';
+import PreLoader from '../../../UI/Preloader';
 
 
 export const Auth = () => {
@@ -26,7 +26,7 @@ export const Auth = () => {
 
   return (
     <div className={style.container}>
-      {loading ? (<AuthLoader/>) : auth.name ? (
+      {loading ? (<PreLoader/>) : auth.name ? (
         <>
           <button onClick={handleClick}
             className={style.btn}>

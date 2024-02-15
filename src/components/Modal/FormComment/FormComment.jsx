@@ -1,13 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import style from './FormComment.module.css';
 import {Text} from '../../../UI/Text';
-import { useSelector } from 'react-redux';
-// import { updateComment } from '../../../store/commentReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateComment } from '../../../store/comments/action.js';
 
 
 export const FormComment = () => {
+  const dispatch = useDispatch();
   const value = useSelector(state => state.commentReducer.comment);
-  // const dispatch = useDispatch();
+  const auth = useSelector(state => state.authReducer.data);
 
   const textFromTextarea = useRef(null);
   const [showTextarea, setShowTextarea] = useState(false);
@@ -28,7 +29,7 @@ export const FormComment = () => {
   };
 
   const handleChange = (e) => {
-    // dispatch(updateComment(e.target.value));
+    dispatch(updateComment(e.target.value));
   };
 
   return (
@@ -43,7 +44,7 @@ export const FormComment = () => {
         <Text As='h3'
           size={14}
           tsize={18}>
-        Имя авторизованного пользователя
+          {auth.name}
         </Text>
         <textarea
           defaultValue={value}

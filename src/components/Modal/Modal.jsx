@@ -8,11 +8,11 @@ import { ReactComponent as CloseIcon } from './img/close.svg';
 import { useCommentsData } from '../../hooks/useCommentsData.js';
 import Comments from './Comments';
 import FormComment from './FormComment';
+import { Preloader } from '../../UI/Preloader/Preloader.jsx';
 
 
 export const Modal = ({post, closeModal}) => {
   const [comments, loading] = useCommentsData(post.id);
-  console.log(comments);
   const mainPost = comments?.[0];
   const postComments = comments?.slice(1);
 
@@ -44,11 +44,21 @@ export const Modal = ({post, closeModal}) => {
     return (
       <div className={style.overlay} ref={overlayRef}>
         <div className={style.modal}>
-          <p>Загрузка...</p>
+          <Preloader/>
         </div>
       </div>
     );
   }
+
+  // if (error !== '') {
+  //   return (
+  //     <div className={style.overlay} ref={overlayRef}>
+  //       <div className={style.modal}>
+  //         <p>Ошибка загрузки...</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return ReactDOM.createPortal(
     <div className={style.overlay} ref={overlayRef}>
@@ -73,7 +83,7 @@ export const Modal = ({post, closeModal}) => {
         <p className={style.author}>
           {mainPost.author}</p>
         <FormComment/>
-        <Comments comments={postComments} />
+        <Comments comments={postComments[0]} />
         <button className={style.close}
           onClick={() => {
             closeModal();

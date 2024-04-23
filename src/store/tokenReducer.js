@@ -9,14 +9,14 @@ const UPDATE_TOKEN = 'UPDATE_TOKEN';
 const DELETE_TOKEN = 'DELETE_TOKEN';
 
 
-export const updateToken = token => ({
+export const updateToken = (token) => ({
   type: UPDATE_TOKEN,
   token,
 });
 
-export const deleteToken = token => ({
+export const deleteToken = () => ({
   type: DELETE_TOKEN,
-  token,
+  token: '',
 });
 
 export const tokenMiddleware = store => next => (action) => {
@@ -39,13 +39,10 @@ export const tokenReducer = (state = initialState, action) => {
         token: action.token,
       };
     case DELETE_TOKEN:
-
       return {
         ...state,
         token: '',
       };
-
-
     default:
       return state;
   }

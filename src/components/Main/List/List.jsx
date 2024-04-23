@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Post from './Post';
 import style from './List.module.css';
-import { usePosts } from '../../../hooks/usePosts.js';
-import Preloader from '../../../UI/Preloader';
-
+// import Preloader from '../../../UI/Preloader';
+import { useDispatch, useSelector } from 'react-redux';
+import { postsRequestAsync } from '../../../store/posts/actions.js';
+import {useParams, Outlet} from 'react-router-dom';
 
 export const List = () => {
-  const [posts, loading] = usePosts();
+  const posts = useSelector(state => state.postsReducer.posts);
+  // const loading = useSelector(state => state.postsReducer.loading);
+  const endList = useRef(null);
+  const dispatch = useDispatch();
+  const { page } = useParams();
+
+  useEffect(() => {
+    dispatch(postsRequestAsync(page));
+  }, [page]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        dispatch(postsRequestAsync());
+      }
+    }, {
+      rootMargin: '100px',
+    });
+
+    observer.observe(endList.current);
+    return () => {
+      if (endList.current) {
+        observer.unobserve(endList.current);
+      }
+    };
+  }, [endList.current]);
   return (
-    <ul className={style.list}>
-      {loading ? <Preloader size={70} /> :
-      posts.map(post => <Post key={post.data.id} post={post.data} />)}
-    </ul>
+    <>
+      <ul className={style.list}>
+        {
+          posts.map(({data}) => (<Post key={data.id} post={data} />))}
+        <li ref={endList} className={style.end}/>
+      </ul>
+      <Outlet/>
+    </>
+
   );
 };

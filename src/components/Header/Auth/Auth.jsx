@@ -7,9 +7,12 @@ import {urlAuth} from '../../../api/auth';
 import {Text} from '../../../UI/Text';
 import { useAuth } from '../../../hooks/useAuth';
 import PreLoader from '../../../UI/Preloader';
+import { useDispatch } from 'react-redux';
+import { deleteToken } from '../../../store/tokenReducer.js';
 
 
 export const Auth = () => {
+  const dispatch = useDispatch();
   const [auth, loading, clearAuth] = useAuth();
   const [isVisibleLogoutButton, setVisibleLogoutButton] = useState(false);
 
@@ -18,6 +21,7 @@ export const Auth = () => {
   };
 
   const logOut = () => {
+    dispatch(deleteToken);
     clearAuth();
   };
 

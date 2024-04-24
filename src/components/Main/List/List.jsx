@@ -11,10 +11,14 @@ export const List = () => {
   // const loading = useSelector(state => state.postsReducer.loading);
   const endList = useRef(null);
   const dispatch = useDispatch();
+
   const { page } = useParams();
+  console.log('Current page:', page);
 
   useEffect(() => {
-    dispatch(postsRequestAsync(page));
+    if (page) {
+      dispatch(postsRequestAsync(page));
+    }
   }, [page]);
 
   useEffect(() => {

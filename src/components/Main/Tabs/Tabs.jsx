@@ -61,7 +61,9 @@ export const Tabs = () => {
             <li className={style.item} key={id}>
               <button className={style.btn} onClick={() => {
                 setMenuItem(value);
-                navigate(link === 'rising' ? '/' : `/category/${link}`);
+                navigate(`/category/${link}`);
+
+                // navigate(link === 'rising' ? '/' : `/category/${link}`);
               }}>
                 {value}
                 { Icon && <Icon width={30} height={30}/>}

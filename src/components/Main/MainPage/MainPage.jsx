@@ -6,7 +6,7 @@ export const MainPage = (props) => {
   return (
     <div className={style.container}>
       <h2>Стартовая страница</h2>
-      <h3>Добро пожаловать!</h3>
+      <h3>Добро пожаловать!!!</h3>
       <h4>Выберите категорию</h4>
     </div>
   );

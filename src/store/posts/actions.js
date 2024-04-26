@@ -8,6 +8,7 @@ export const POSTS_REQUEST_SUCCESS = 'POSTS_REQUEST_SUCCESS';
 export const POSTS_REQUEST_SUCCESS_AFTER = 'POSTS_REQUEST_SUCCESS_AFTER';
 export const POSTS_REQUEST_ERROR = 'POSTS_REQUEST_ERROR';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
+// export const CHANGE_PAGE = 'CHANGE_PAGE';
 
 
 export const postsRequest = () => ({

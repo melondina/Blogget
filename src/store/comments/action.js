@@ -2,7 +2,7 @@
 import {URL_API} from '../../api/const';
 import axios from 'axios';
 // import { commentsSlice } from './commentsSlice';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const COMMENTS_REQUEST_ERROR = 'COMMENTS_REQUEST_ERROR';
 export const COMMENTS_REQUEST_SUCCESS = 'COMMENTS_REQUEST_SUCCESS';

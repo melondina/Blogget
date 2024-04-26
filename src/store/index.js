@@ -1,11 +1,11 @@
-// import { combineReducers, createStore, applyMiddleware } from 'redux';
-// import { composeWithDevTools } from '@redux-devtools/extension';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from '@redux-devtools/extension';
 import { tokenMiddleware, tokenReducer } from './tokenReducer';
 import { commentsReducer } from './comments/commentsReducer.js';
 import { authReducer } from './auth/authReducer';
-import postsReducer from './posts/postsSlice';
+// import postsReducer from './posts/postsSlice';
 
-// import { postsReducer } from './posts/postsReducer';
+import { postsReducer } from './posts/postsReducer';
 
 import { thunk } from 'redux-thunk';
 import { comReducer } from './comment/comReducer.js';

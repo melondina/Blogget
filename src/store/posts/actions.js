@@ -47,6 +47,8 @@ export const postsRequestAsync = (newPage) => (dispatch, getState) => {
     page = newPage;
     dispatch(changePage(page));
   }
+  console.log(page);
+
   const token = getState().tokenReducer.token;
   const after = getState().postsReducer.after;
   const loading = getState().postsReducer.loading;

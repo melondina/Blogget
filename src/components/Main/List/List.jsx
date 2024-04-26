@@ -4,17 +4,22 @@ import style from './List.module.css';
 // import Preloader from '../../../UI/Preloader';
 import { useDispatch, useSelector } from 'react-redux';
 import { postsRequestAsync } from '../../../store/posts/actions.js';
-import {useParams, Outlet} from 'react-router-dom';
+import { Outlet, useParams} from 'react-router-dom';
 
 export const List = () => {
+  const { page } = useParams();
+  console.log('Current page:', page);
+
   const posts = useSelector(state => state.postsReducer.posts);
+  console.log(posts);
   // const loading = useSelector(state => state.postsReducer.loading);
   const endList = useRef(null);
   const dispatch = useDispatch();
-  const { page } = useParams();
 
   useEffect(() => {
-    dispatch(postsRequestAsync(page));
+    if (page) {
+      dispatch(postsRequestAsync(page));
+    }
   }, [page]);
 
   useEffect(() => {
@@ -42,6 +47,5 @@ export const List = () => {
       </ul>
       <Outlet/>
     </>
-
   );
 };

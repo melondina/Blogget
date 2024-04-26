@@ -10,7 +10,6 @@ import PreLoader from '../../../UI/Preloader';
 import { useDispatch } from 'react-redux';
 import { deleteToken } from '../../../store/tokenReducer.js';
 
-
 export const Auth = () => {
   const dispatch = useDispatch();
   const [auth, loading, clearAuth] = useAuth();
@@ -20,13 +19,14 @@ export const Auth = () => {
     setVisibleLogoutButton(!isVisibleLogoutButton);
   };
 
+  window.history.replaceState(null, null, '/');
+
   const logOut = () => {
     dispatch(deleteToken);
     clearAuth();
   };
 
   // console.log('auth', auth);
-
 
   return (
     <div className={style.container}>

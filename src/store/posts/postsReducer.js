@@ -57,10 +57,7 @@ export const postsReducer = (state = initialState, action) => {
         page: action.page,
         after: '',
         isLast: false,
-
       };
-
-
     default: return state;
   }
 };

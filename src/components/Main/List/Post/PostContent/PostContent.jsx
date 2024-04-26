@@ -12,7 +12,7 @@ export const PostContent = ({post}) => {
     <div className={style.content}>
       <Text As='h2' className={style.title}>
         <Link className={style.linkPost}
-          to={`/category/${page}/post${post.id}`}>
+          to={`/category/${page}/post/${post.id}`}>
           <Text
             className={style.linkPost}
             size={18}

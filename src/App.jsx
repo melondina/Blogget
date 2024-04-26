@@ -12,13 +12,16 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path='*' element={
+      <Route path='/*' element={
         <>
           <Header />
           <Main />
-          {/* <MainPage/> */}
+          <MainPage/>
         </>
       }/>
+      <Route path='*'>
+        <>404</>
+      </Route>
     </Routes>
   );
 };

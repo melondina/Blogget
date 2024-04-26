@@ -5,7 +5,7 @@ import Tabs from './Tabs';
 import List from './List';
 import { Routes, Route } from 'react-router-dom';
 import Modal from '../Modal';
-import MainPage from './MainPage';
+// import MainPage from './MainPage';
 
 
 export const Main = () => (
@@ -13,12 +13,10 @@ export const Main = () => (
     <Layout>
       <Tabs />
       <Routes>
-        <Route path='/' element={<MainPage/>}/>
-        <Route path='/category/:page' element={<List/>}>
-          <Route path='post/:id' element={<Modal/>}/>
-        </Route>
+        {/* <Route path='/' element={<MainPage />} /> */}
+        <Route path='/category/:page/*' element={<List />} />
+        <Route path='/category/:page/post/:id' element={<Modal />} />
       </Routes>
-      <List />
     </Layout>
   </main>
 );

@@ -40,28 +40,25 @@
 //         isLast: !action.after,
 //       };
 
-//     case POSTS_REQUEST_ERROR:
-//       return {
-//         ...state,
-//         loading: false,
-//         error: action.error,
-//       };
-//     case POSTS_CLEAR:
-//       return {
-//         ...state,
-//         posts: [],
-//       };
-//     case CHANGE_PAGE:
-//       return {
-//         ...state,
-//         page: action.page,
-//         after: '',
-//         isLast: false,
-
-//       };
-
-
-//     default: return state;
-//   }
-// };
+    case POSTS_REQUEST_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    case POSTS_CLEAR:
+      return {
+        ...state,
+        posts: [],
+      };
+    case CHANGE_PAGE:
+      return {
+        ...state,
+        page: action.page,
+        after: '',
+        isLast: false,
+      };
+    default: return state;
+  }
+};
 

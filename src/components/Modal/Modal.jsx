@@ -17,7 +17,6 @@ export const Modal = () => {
   const navigate = useNavigate();
   const [comments, loading] = useCommentsData(id);
   const mainPost = comments?.[0];
-  console.log(comments);
   const postComments = comments?.slice(1);
 
   const overlayRef = useRef(null);
@@ -83,7 +82,7 @@ export const Modal = () => {
         <button className={style.close}
           onClick={() => {
             // closeModal();
-            navigate(`category/${page}`);
+            navigate(`/category/${page}`);
           }}>
           <CloseIcon/>
         </button>

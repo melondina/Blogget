@@ -2,12 +2,12 @@ import React, { useRef, useState, useEffect } from 'react';
 import style from './FormComment.module.css';
 import {Text} from '../../../UI/Text';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateComment } from '../../../store/comments/action.js';
+import { updateComment } from '../../../store/comment/action.js';
 
 
 export const FormComment = () => {
   const dispatch = useDispatch();
-  const value = useSelector(state => state.commentReducer.comment);
+  const value = useSelector(state => state.comReducer.comment);
   const auth = useSelector(state => state.authReducer.data);
 
   const textFromTextarea = useRef(null);

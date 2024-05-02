@@ -3,9 +3,9 @@ import { commentsRequestAsync } from './action.js';
 
 const initialState = {
   loading: false,
+  post: {},
   comments: [],
   error: '',
-  dina: 'dina',
 };
 
 export const commentsSlice = createSlice({
@@ -49,6 +49,7 @@ export const commentsSlice = createSlice({
         state.error = '';
       })
       .addCase(commentsRequestAsync.fulfilled, (state, action) => {
+        state.post = action.payload.post;
         state.comments = action.payload.comments;
         state.loading = false;
         state.error = '';

@@ -7,7 +7,7 @@ import { authReducer } from './auth/authReducer';
 import commentsReducer from './comments/commentsSlice';
 
 
-import { postsReducer } from './posts/postsReducer';
+import postsReducer from './posts/postsSlice';
 
 // import { thunk } from 'redux-thunk';
 import { comReducer } from './comment/comReducer.js';

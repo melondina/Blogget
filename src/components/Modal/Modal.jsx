@@ -15,9 +15,7 @@ import {useParams, useNavigate} from 'react-router-dom';
 export const Modal = () => {
   const {id, page} = useParams();
   const navigate = useNavigate();
-  const [comments, loading] = useCommentsData(id);
-  const mainPost = comments?.[0];
-  const postComments = comments?.slice(1);
+  const [comments, loading, post] = useCommentsData(id);
 
   const overlayRef = useRef(null);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
@@ -39,7 +37,7 @@ export const Modal = () => {
 
   useEffect(() => {
     document.addEventListener('click', handleClick);
-    setIsDataLoaded(!loading && !!mainPost);
+    setIsDataLoaded(!loading && !!post);
     return () => {
       document.removeEventListener('click', handleClick);
     };
@@ -59,7 +57,7 @@ export const Modal = () => {
     <div className={style.overlay} ref={overlayRef}>
       <div className={style.modal}>
         <h2 className={style.title}>
-          {mainPost.title}
+          {post.title}
         </h2>
         <div className={style.content}>
           <Markdown options={{
@@ -72,13 +70,13 @@ export const Modal = () => {
             }
           }
           }>
-            {mainPost.selftext}
+            {post.selftext}
           </Markdown>
         </div>
         <p className={style.author}>
-          {mainPost.author}</p>
+          {post.author}</p>
         <FormComment/>
-        <Comments comments={postComments[0]} />
+        <Comments comments={comments} />
         <button className={style.close}
           onClick={() => {
             // closeModal();

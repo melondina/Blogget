@@ -15,6 +15,11 @@ export const postsSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
+    changePage: (state, action) => {
+      state.page = action.payload.page;
+      state.after = '';
+      state.isLast = false;
+    }
   },
   extraReducers: builder => {
     builder
@@ -23,11 +28,12 @@ export const postsSlice = createSlice({
         state.loading = true;
       })
       .addCase(postsRequestAsync.fulfilled, (state, action) => {
-        state.posts = action.posts;
-        state.loading = true;
+        console.log(action.payload);
+        state.posts = [...state.posts, ...action.payload.children];
+        state.loading = false;
         state.error = '';
-        state.after = action.after;
-        state.isLast = !action.after;
+        state.after = action.payload.after;
+        state.isLast = !action.payload.after;
       })
       .addCase(postsRequestAsync.rejected, (state, action) => {
         state.error = action.error;

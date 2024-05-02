@@ -6,9 +6,8 @@ import { commentsRequestAsync } from '../store/comments/action.js';
 
 export const useCommentsData = (id) => {
   const comments = useSelector(state => state.comments.comments);
-  console.log(comments);
+  const post = useSelector(state => state.comments.post);
   const loading = useSelector(state => state.comments.loading);
-  console.log(loading);
   const token = useSelector(state => state.tokenReducer.token);
   const dispatch = useDispatch();
 
@@ -18,7 +17,7 @@ export const useCommentsData = (id) => {
   }, [token]);
 
 
-  return [comments || [], loading];
+  return [comments || [], loading, post];
 };
 
 

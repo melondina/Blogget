@@ -3,7 +3,7 @@ import Post from './Post';
 import style from './List.module.css';
 // import Preloader from '../../../UI/Preloader';
 import { useDispatch, useSelector } from 'react-redux';
-import { postsRequestAsync } from '../../../store/posts/actions.js';
+import { postsRequestAsync } from '../../../store/posts/action.js';
 import { Outlet, useParams} from 'react-router-dom';
 
 export const List = () => {

@@ -14,8 +14,9 @@ export const Main = () => (
       <Tabs />
       <Routes>
         {/* <Route path='/' element={<MainPage />} /> */}
-        <Route path='/category/:page/*' element={<List />} />
-        <Route path='/category/:page/post/:id' element={<Modal />} />
+        <Route path='/category/:page/*' element={<List />}>
+          <Route path='post/:id' element={<Modal />} />
+        </Route>
       </Routes>
     </Layout>
   </main>

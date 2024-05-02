@@ -16,9 +16,11 @@ export const postsSlice = createSlice({
   initialState,
   reducers: {
     changePage: (state, action) => {
-      state.page = action.payload.page;
+      console.log(action.payload);
+      state.page = action.payload;
       state.after = '';
       state.isLast = false;
+      state.posts = [];
     }
   },
   extraReducers: builder => {
@@ -41,4 +43,10 @@ export const postsSlice = createSlice({
       });
   }
 });
+
+
 export default postsSlice.reducer;
+
+export const { changePage } = postsSlice.actions;
+
+

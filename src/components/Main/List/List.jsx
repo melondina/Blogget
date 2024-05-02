@@ -11,6 +11,8 @@ export const List = () => {
   console.log('Current page:', page);
 
   const posts = useSelector(state => state.postsReducer.posts);
+  const after = useSelector(state => state.postsReducer.after);
+
   console.log(posts);
   // const loading = useSelector(state => state.postsReducer.loading);
   const endList = useRef(null);
@@ -24,7 +26,7 @@ export const List = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
+      if (entries[0].isIntersecting && after !== null) {
         dispatch(postsRequestAsync());
       }
     }, {
@@ -37,7 +39,7 @@ export const List = () => {
         observer.unobserve(endList.current);
       }
     };
-  }, [endList.current]);
+  }, [endList.current, posts]);
   return (
     <>
       <ul className={style.list}>

@@ -98,9 +98,6 @@ export const postsRequestAsync = createAsyncThunk('posts/fetch',
       },
     })
 
-      .then(({ data }) => {
-        console.log(data.data);
-        return data.data;
-      })
+      .then(({ data }) => data.data)
       .catch((error) => (error.toString()));
   });

@@ -16,10 +16,12 @@ export const postsSlice = createSlice({
   initialState,
   reducers: {
     changePage: (state, action) => {
-      console.log(action.payload);
       state.page = action.payload;
       state.after = '';
       state.isLast = false;
+      state.posts = [];
+    },
+    postsClear: (state) => {
       state.posts = [];
     }
   },
@@ -30,7 +32,6 @@ export const postsSlice = createSlice({
         state.loading = true;
       })
       .addCase(postsRequestAsync.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.posts = [...state.posts, ...action.payload.children];
         state.loading = false;
         state.error = '';
@@ -47,6 +48,6 @@ export const postsSlice = createSlice({
 
 export default postsSlice.reducer;
 
-export const { changePage } = postsSlice.actions;
+export const { changePage, postsClear } = postsSlice.actions;
 
 

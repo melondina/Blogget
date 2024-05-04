@@ -4,7 +4,8 @@ import { useDispatch} from 'react-redux';
 import { updateToken } from './store/tokenReducer';
 import { getToken } from './api/token';
 import { Routes, Route } from 'react-router-dom';
-import MainPage from './components/Main/MainPage';
+// import { MainPage } from './components/Main/MainPage/MainPage.jsx';
+// import MainPage from './components/Main/MainPage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -16,12 +17,12 @@ const App = () => {
         <>
           <Header />
           <Main />
-          <MainPage/>
+          {/* <MainPage/> */}
         </>
       }/>
-      <Route path='*'>
-        <>404</>
-      </Route>
+
+      {/* <Route path='/*' element={<Header />}/>
+      <Route path='/' element={<Main />}/> */}
     </Routes>
   );
 };

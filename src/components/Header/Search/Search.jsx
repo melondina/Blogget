@@ -1,15 +1,29 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useState } from 'react';
 import style from './Search.module.css';
 import {ReactComponent as SearchIcon} from './img/search.svg';
+import { useDispatch } from 'react-redux';
+import { searchRequest } from '../../../store/search/searchAction.js';
 
-export const Search = () => (
-  <form className={style.form}>
-    <input className={style.search} type='search'/>
-    <button className={style.button}>
-      <SearchIcon width={128} height={128}
-        className={style.svg}
+export const Search = () => {
+  const [search, setSearch] = useState('');
+  const dispatch = useDispatch();
+  const handlerSubmit = (e) => {
+    e.preventDefault();
+    dispatch(searchRequest(search));
+  };
+
+  return (
+    <form className={style.form} onSubmit={handlerSubmit}>
+      <input className={style.search} type='search'
+        onChange={e => setSearch(e.target.value)}
+        value={search}
       />
-    </button>
-  </form>
-);
+      <button className={style.button} type='submit'>
+        <SearchIcon width={128} height={128}
+          className={style.svg}
+        />
+      </button>
+    </form>
+  );
+};
